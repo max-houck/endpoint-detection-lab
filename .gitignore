@@ -1,0 +1,20 @@
+# Secrets & sensitive files
+.env
+*.env
+*.pem
+*.key
+*.crt
+config/wazuh_indexer_ssl_certs/
+data/
+volumes/
+
+# OS & editor junk
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Large files we don't want in Git
+*.log
+screenshots/*.png   # We will add only selected ones
