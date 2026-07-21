@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Endpoint Detection Lab – Wazuh SIEM
 
 A professional-grade personal SIEM / endpoint detection laboratory built to demonstrate detection engineering, compliance monitoring, and incident response skills.
