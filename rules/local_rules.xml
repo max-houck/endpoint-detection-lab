@@ -1,0 +1,26 @@
+<!-- Local rules for Endpoint Detection Lab -->
+
+<group name="local,">
+
+  <!-- Custom SSH Brute Force Rule -->
+  <rule id="100100" level="12">
+    <if_sid>5760, 5503, 5710, 5763, 2502</if_sid>
+    <description>Custom Rule: Multiple failed SSH login attempts - possible brute force</description>
+    <mitre>
+      <id>T1110</id>
+    </mitre>
+    <group>authentication_failures,</group>
+  </rule>
+
+  <!-- Custom FIM Rule for /etc changes -->
+  <rule id="100101" level="10">
+    <if_sid>550, 553, 554</if_sid>
+    <field name="file">/etc/</field>
+    <description>Custom Rule: Sensitive file change detected under /etc</description>
+    <mitre>
+      <id>T1565.001</id>
+    </mitre>
+    <group>syscheck,</group>
+  </rule>
+
+</group>
