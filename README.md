@@ -1,34 +1,64 @@
-<<<<<<< HEAD
 # Endpoint Detection Lab – Wazuh SIEM
 
-A professional-grade personal SIEM / endpoint detection laboratory built to demonstrate detection engineering, compliance monitoring, and incident response skills.
+A hands-on SIEM and endpoint detection laboratory built to develop and demonstrate practical detection engineering skills.
 
-**Purpose**: Showcase hands-on security operations capabilities relevant to Endpoint Security Engineer, Detection Engineer, and SOC Analyst roles.
+## Overview
 
-## Architecture Overview
-- **SIEM Platform**: Wazuh (single-node deployment via Docker)
+This lab uses Wazuh (open-source XDR/SIEM) running in Docker on macOS, with an Ubuntu Server virtual machine as a monitored endpoint.
+
+**Goals of this project:**
+- Deploy and operate a real SIEM
+- Enroll and monitor an endpoint agent
+- Generate realistic security events
+- Write and test custom detection rules
+- Map detections to MITRE ATT&CK
+- Practice investigation and documentation
+
+## Lab Architecture
+
+- **SIEM**: Wazuh 4.14.6 (Manager + Indexer + Dashboard) via Docker Compose
+- **Endpoint**: Ubuntu 24.04 Server (VMware Fusion)
 - **Host**: macOS (Intel) with resource-constrained Docker Desktop
-- **Monitored Endpoints**: Ubuntu Server 24.04 VM (primary agent) + optional lightweight container agent
-- **Key Capabilities Demonstrated**:
-  - Agent-based endpoint telemetry
-  - File Integrity Monitoring (FIM)
-  - Custom detection rules with MITRE ATT&CK mapping
-  - Alert investigation and documentation
-  - Security hygiene and least-privilege design
-
-*(Architecture diagram to be added in `/architecture/`)*
+- **Networking**: VMware NAT (agent communicates via host IP)
 
 ## Skills Demonstrated
-- SIEM deployment and operations
-- Detection rule authoring and tuning
-- Log analysis and incident response
-- Compliance-focused monitoring (SOC 2 aligned)
+
+- SIEM deployment and configuration
+- Agent enrollment and troubleshooting
+- Custom detection rule creation
+- MITRE ATT&CK mapping
+- File Integrity Monitoring (FIM)
+- Authentication failure / brute-force detection
+- Log analysis and alert triage
 - Secure lab design and documentation
 
-## Quick Start
+## Custom Detections Created
+
+| Rule ID  | Description                                      | MITRE ATT&CK | Level |
+|----------|--------------------------------------------------|--------------|-------|
+| 100100   | Multiple failed SSH login attempts - possible brute force | T1110       | 12    |
+| 100101   | Sensitive file change detected under /etc        | T1565.001    | 10    |
+
+## How to Run the Lab
+
 ```bash
-# Start the lab
+cd wazuh-docker/single-node
 docker compose up -d
 
-# Stop the lab
-docker compose down
+## Security Notes
+
+- Self-signed certificates used (acceptable for lab use only)
+- Default credentials were changed
+- Docker resources limited to 4.5 GB RAM and 2 CPUs because of 8 GB host machine
+- Agent communicates over VMware NAT network
+- Syscheck frequency was temporarily reduced for faster lab testing
+
+## Next Steps / Future Improvements
+
+- Add auditd for better process execution visibility
+- Create more targeted custom rules (dangerous sudo commands, reverse shells, etc.)
+- Add a second agent (Windows or another Linux)
+- Build simple custom dashboards
+- Write full investigation reports with timelines
+- Implement basic active response
+- Document vulnerability findings and basic remediation
