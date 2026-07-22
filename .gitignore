@@ -17,4 +17,4 @@ Thumbs.db
 
 # Large files we don't want in Git
 *.log
-screenshots/*.png   # We will add only selected ones
+
