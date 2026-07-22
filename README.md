@@ -1,5 +1,29 @@
 # Endpoint Detection Lab – Wazuh SIEM
 
+## Lab Architecture
+
+```mermaid
+flowchart TB
+    subgraph Mac["macOS Host (Docker Desktop)"]
+        Manager[Wazuh Manager]
+        Indexer[Wazuh Indexer]
+        Dashboard[Wazuh Dashboard]
+        Manager --> Indexer
+        Indexer --> Dashboard
+    end
+
+    subgraph VM["VMware Fusion"]
+        Agent[Ubuntu 24.04 Server<br/>Wazuh Agent]
+    end
+
+    Manager <-->|Port 1514| Agent
+    Agent -.-> Network[VMware NAT Network<br/>172.16.189.0/24]
+
+    style Mac fill:#1e3a5f,stroke:#3b82f6,color:#fff
+    style VM fill:#064e3b,stroke:#10b981,color:#fff
+    style Network fill:#374151,stroke:#9ca3af,color:#fff
+```
+
 A hands-on SIEM and endpoint detection laboratory built to develop and demonstrate practical detection engineering skills.
 
 ## Overview
