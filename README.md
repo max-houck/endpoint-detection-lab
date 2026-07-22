@@ -44,6 +44,7 @@ This lab uses Wazuh (open-source XDR/SIEM) running in Docker on macOS, with an U
 ```bash
 cd wazuh-docker/single-node
 docker compose up -d
+```
 
 ## Security Notes
 
