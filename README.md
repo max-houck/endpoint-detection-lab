@@ -24,7 +24,7 @@ flowchart TB
     style Network fill:#374151,stroke:#9ca3af,color:#fff
 ```
 
-A hands-on SIEM and endpoint detection laboratory built to develop and demonstrate practical detection engineering skills.
+A hands-on SIEM and endpoint detection lab built to develop and demonstrate practical detection engineering skills.
 
 ## Overview
 
